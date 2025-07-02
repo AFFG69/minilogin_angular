@@ -1,0 +1,77 @@
+<section
+  class="flex items-center justify-center min-h-screen bg-cover bg-center text-gray-800 dark:text-white"
+  style="background-image: url('https://wallpapers.com/images/hd/home-cinema-1920-x-1080-wallpaper-5x14yn49r8by3w0a.jpg');"
+>
+  <div class="bg-white bg-opacity-90 dark:bg-gray-900 dark:bg-opacity-90 p-10 rounded-xl shadow-lg w-full max-w-md">
+
+    <!-- Modo oscuro-->
+    <div class="flex justify-end mb-4">
+      <button (click)="toggleDarkMode()" class="btn btn-sm btn-neutral">
+       {{ isdarkmode ? '🌙' : '☀️' }}  
+      </button>
+    </div>
+
+  <!-- Logo -->
+<div class="mb-8">
+  <div class="text-3xl font-bold flex items-center gap-2">
+    <img 
+      src="https://media.istockphoto.com/id/819590732/es/vector/ni%C3%B1o-mirando-tv-por-la-noche.jpg?s=612x612&w=0&k=20&c=ErRdhID0x_Xj6Dv5JzGFZDiR8HYbWH_V-SqmaEqCzNY=" 
+      alt="Logo" 
+      class="w-10 h-10 rounded-full object-cover"
+    />
+    Cineatucasa
+  </div>
+</div>
+
+    <!-- Login form -->
+    <form #loginForm="ngForm" class="w-full space-y-6">
+      <h2 class="text-2xl font-semibold">Log in</h2>
+
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text dark:text-gray-300">Email address</span>
+        </label>
+        <input
+          type="email"
+          [(ngModel)]="email"
+          name="email"
+          placeholder="ejemplo@correo.com"
+          class="input input-bordered w-full bg-white dark:bg-gray-800 dark:text-white"
+          required
+        />
+        <div *ngIf="emailError" class="text-red-500 text-sm mt-1 flex items-center gap-1">
+        ❗   {{ emailError }}
+      </div>
+     
+      </div>
+
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text dark:text-gray-300">Password</span>
+        </label>
+        <input
+          type="password"
+          [(ngModel)]="password"
+          name="password"
+          placeholder="Password"
+          class="input input-bordered w-full bg-white dark:bg-gray-800 dark:text-white"
+          required
+        />
+        <div *ngIf="passwordError" class="text-red-500 text-sm mt-1 flex items-center gap-1">
+        ❗ {{ passwordError }}
+      </div>
+      </div>
+
+      <div class="form-control">
+        <button (click)="onValidaregistro()" class="btn btn-info w-full" type="submit">
+          Login
+        </button>
+      </div>
+
+      <div class="text-sm text-gray-500 dark:text-gray-400">
+        Don't have an account?
+        <a (click)="irARegistro(); $event.preventDefault()" href="#" class="text-info">Register here</a>
+      </div>
+    </form>
+  </div>
+</section>

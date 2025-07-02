@@ -1,0 +1,82 @@
+<section
+  class="flex items-center justify-center min-h-screen bg-cover bg-center text-gray-800 dark:text-white"
+  style="background-image: url('https://wallpapers.com/images/hd/home-cinema-1920-x-1080-wallpaper-5x14yn49r8by3w0a.jpg');"
+>
+  <div class="bg-white bg-opacity-90 dark:bg-gray-900 dark:bg-opacity-90 p-10 rounded-xl shadow-lg w-full max-w-md">
+
+    <!-- Modo Oscuro -->
+    <div class="flex justify-end mb-4">
+      <button (click)="toggleDarkMode()" class="btn btn-sm btn-neutral">
+        {{ isdarkmode ? '🌙' :  '☀️'  }}  
+      </button>
+    </div>
+
+    <!-- Título -->
+    <div class="mb-6 text-center">
+      <h2 class="text-3xl font-bold mb-2">Crear cuenta</h2>
+      <p class="text-gray-600 dark:text-gray-400">Registrate para acceder</p>
+    </div>
+
+    <!-- Formulario de registro -->
+    <form (ngSubmit)="onRegister()" class="space-y-6">
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text dark:text-gray-300">Email</span>
+        </label>
+        <input
+          [(ngModel)]="email"
+          name="email"
+          type="email"
+          placeholder="tu@correo.com"
+          required
+          class="input input-bordered w-full bg-white dark:bg-gray-800 dark:text-white"
+        />
+          <div *ngIf="emailError" class="text-red-500 text-sm mt-1 flex items-center gap-1">
+          ❗ {{ emailError }}
+          </div>
+      </div>
+
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text dark:text-gray-300">Contraseña</span>
+        </label>
+        <input
+          [(ngModel)]="password"
+          name="password"
+          type="password"
+          placeholder="Contraseña"
+          required
+          class="input input-bordered w-full bg-white dark:bg-gray-800 dark:text-white"
+        />
+        <div *ngIf="passwordError" class="text-red-500 text-sm mt-1 flex items-center gap-1">
+        ❗ {{ passwordError }}
+        </div>
+
+      </div>
+
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text dark:text-gray-300">Confirmar contraseña</span>
+        </label>
+        <input
+          [(ngModel)]="confirmPassword"
+          name="confirmPassword"
+          type="password"
+          placeholder="Confirmar contraseña"
+          required
+          class="input input-bordered w-full bg-white dark:bg-gray-800 dark:text-white"
+        />
+         <div *ngIf="confirmPasswordError" class="text-red-500 text-sm mt-1 flex items-center gap-1">
+            ❗ {{ confirmPasswordError }}
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary w-full">Registrarse</button>
+
+      <p class="text-sm text-gray-600 dark:text-gray-400 text-center">
+        ¿Ya tenés cuenta?
+        <a (click)="iraInicio(); $event.preventDefault()" href="#" class="text-info">Iniciar sesión</a>
+      </p>
+    </form>
+  </div>
+</section>
